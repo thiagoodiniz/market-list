@@ -1,3 +1,10 @@
 body {
   margin: 0;
 }
+
+.app-bar {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+}

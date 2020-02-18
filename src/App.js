@@ -1,9 +1,12 @@
 import React from 'react';
+import AppBar from '@material-ui/core/AppBar';
 
 function App() {
   return (
     <div className="App">
-      <h1>Beleuza!</h1>
+      <AppBar className="app-bar" position="static">
+        <h2>Listas de Compras</h2>
+      </AppBar>
     </div>
   );
 }
