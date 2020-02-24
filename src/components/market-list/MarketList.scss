@@ -1,0 +1,34 @@
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.list-card {
+    margin: 20px;
+    width: 205px;
+    height: 210px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 60%;
+    }
+}
+
+.add-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    & button {
+        font-size: 30px;
+    }
+}
