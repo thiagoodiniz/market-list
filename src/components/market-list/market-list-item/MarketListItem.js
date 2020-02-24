@@ -14,7 +14,8 @@ const MarketListItem = (props) => {
         setName(props.name);
         setDescription(props.description);
         setMarket(props.market);
-    }, [props.name, props.description, props.market]);
+        toggleIsEditing(props.isEditing);
+    }, [props.name, props.description, props.market, props.isEditing]);
 
     return(
         <Card className="list-card">
@@ -40,7 +41,7 @@ const MarketListItem = (props) => {
                         <Button size="small" color="primary" onClick={ () => toggleIsEditing(!isEditing) }>
                             Editar
                         </Button>
-                        <Button size="small" color="primary">
+                        <Button size="small" color="primary" onClick={ props.onRemove } >
                             Remover
                         </Button>
                     </CardActions>
@@ -54,6 +55,7 @@ const MarketListItem = (props) => {
                             label="Título da lista"
                             value={ name }
                             onChange={ e => setName(e.currentTarget.value) }
+                            autoFocus
                         />
                         <TextField
                             label="Descrição"
@@ -86,6 +88,8 @@ MarketListItem.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string,
     market: PropTypes.string,
+    isEditing: PropTypes.bool,
+    onRemove: PropTypes.func,
   };
 
 export default MarketListItem;
