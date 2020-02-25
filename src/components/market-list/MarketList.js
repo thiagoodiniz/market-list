@@ -14,7 +14,7 @@ const MarketList = ( props ) => {
 
 	useEffect(() => {
 		dispatch( MarketListActions.loadMarketLists() );
-    }, []);
+    }, [dispatch]);
 
 	const handleNewList = () => {
 		updateList([...marketLists, {
