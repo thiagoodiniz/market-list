@@ -4,30 +4,23 @@ import { Card, Button } from "@material-ui/core";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import MarketListItem from "./market-list-item/MarketListItem";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Creators as MarketListActions } from '../../store/actions/market-list';
 
 const MarketList = ( props ) => {
 	
-	const [ marketLists, updateList] = useState([]);
-	const dispatch = useDispatch();
+	const marketLists = useSelector(state => state.marketLists.marketLists);
+	const dispatch = useDispatch();	
+
+	const [ addingList, toggleAddingList ] = useState( false );
 
 	useEffect(() => {
 		dispatch( MarketListActions.loadMarketLists() );
     }, [dispatch]);
 
-	const handleNewList = () => {
-		updateList([...marketLists, {
-			name: '',
-			description: '',
-			market: '',
-			isEditing: true,
-		}]);
-	}
-
 	const handleRemoveList = (idx) => {
-		console.log(`removing ${idx}`)
-		updateList( marketLists.filter((list, index) => index !== idx));
+		console.log(`remover o indice ${ idx }`);
+		// updateList( marketLists.filter((list, index) => index !== idx));
 	}
 
 	return (
@@ -37,8 +30,12 @@ const MarketList = ( props ) => {
 				<MarketListItem key={ idx } onRemove={ () => handleRemoveList(idx) } { ...list }/>	
 			) }
 
+			{ addingList && 
+				<MarketListItem onRemove={ () => undefined } name='' description='' market='' isEditing={ true } />
+			}
+
 			<Card className="list-card add-list">
-				<Button onClick={ handleNewList } >
+				<Button onClick={ () => toggleAddingList( !addingList ) } >
 					<FontAwesomeIcon color="#3f53b5" icon={ faPlusCircle } size="lg"/>
 				</Button>
 			</Card>

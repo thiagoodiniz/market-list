@@ -13,6 +13,7 @@ export default function marketLists(state=INITIAL_STATE, action) {
             return {
                 loading: true,
                 error: false,
+                marketLists: [],
             }
 
         case Types.LOAD_SUCCESS:
