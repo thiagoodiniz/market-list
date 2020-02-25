@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './MarketList.scss';
 import { Card, Button } from "@material-ui/core";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import MarketListItem from "./market-list-item/MarketListItem";
+import { useDispatch } from "react-redux";
+import { Creators as MarketListActions } from '../../store/actions/market-list';
 
 const MarketList = ( props ) => {
 	
 	const [ marketLists, updateList] = useState([]);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch( MarketListActions.loadMarketLists() );
+    }, []);
 
 	const handleNewList = () => {
 		updateList([...marketLists, {

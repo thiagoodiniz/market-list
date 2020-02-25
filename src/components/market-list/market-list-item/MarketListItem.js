@@ -10,6 +10,7 @@ const MarketListItem = (props) => {
     const [ description, setDescription ] = useState('');
     const [ market, setMarket ] = useState('');
 
+    // setting properties that comming from props
     useEffect(() => {
         setName(props.name);
         setDescription(props.description);
