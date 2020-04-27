@@ -19,20 +19,28 @@ const MarketList = ( props ) => {
 	}, [dispatch]);
 	
 	const onSaveMarketList = (ml) => {
-		dispatch( MarketListActions.createMarketList(ml));
+		dispatch( MarketListActions.createMarketList(ml) );
 		toggleAddingList(false);
 	}
 
-	const handleRemoveList = (idx) => {
-		console.log(`remover o indice ${ idx }`);
-		// updateList( marketLists.filter((list, index) => index !== idx));
+	const onUpdateMarketList = (ml) => {
+		console.log('Editando o ML:', ml);
+	}
+
+	const handleRemoveList = (ml) => {
+		dispatch( MarketListActions.deleteMarketList(ml) );
 	}
 
 	return (
 		<section className="list">
 
 			{ marketLists.map((list, idx) => 
-				<MarketListItem key={ idx } onRemove={ () => handleRemoveList(idx) } { ...list }/>	
+				<MarketListItem 
+					key={ idx } 
+					onRemove={ () => handleRemoveList(list) } 
+					onSaveMarketList={ (ml) => onUpdateMarketList.bind(this, ml) } 
+					{ ...list }
+				/>	
 			) }
 
 			{ addingList && 

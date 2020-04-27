@@ -32,25 +32,27 @@ export default function marketLists(state=INITIAL_STATE, action) {
 
 
         case Types.CREATE_ML:
+        case Types.DELETE_ML:
             return {
                 ...state,
                 loading: true,
             }
         
         case Types.CREATE_SUCCESS:
+        case Types.DELETE_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 error: false,
             }
-        
+            
         case Types.CREATE_ERROR:
+        case Types.DELETE_ERROR:
             return {
                 ...state,
                 loading: false,
                 error: true,
             }
-
 
         default:
             return state;
