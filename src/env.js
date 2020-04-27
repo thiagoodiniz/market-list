@@ -4,5 +4,5 @@ export const env = {
 
 export const endpoints = {
     loadMarketLists: 'list',
-    // registerMarketList: 'list/register',
+    registerMarketList: 'list/register',
 }

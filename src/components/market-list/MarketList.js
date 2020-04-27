@@ -20,6 +20,7 @@ const MarketList = ( props ) => {
 	
 	const onSaveMarketList = (ml) => {
 		dispatch( MarketListActions.createMarketList(ml));
+		toggleAddingList(false);
 	}
 
 	const handleRemoveList = (idx) => {

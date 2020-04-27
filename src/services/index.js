@@ -1,4 +1,5 @@
 import { env, endpoints } from "../env"
+import axios from 'axios'
 
 export const services = {
     loadMarketLists: () => {
@@ -7,6 +8,9 @@ export const services = {
     },
 
     createMarketList: (marketList) => {
-        console.log('AQUI VAI A REQUEST', marketList);
+        return axios.post(`${env.apiURL}/${endpoints.registerMarketList}`, marketList)
+            .then(res => {
+                console.log('marketList registered:', res.data.list)
+            })
     },
 };
