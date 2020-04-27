@@ -6,5 +6,6 @@ export default function* rootSaga() {
     return yield all([
         takeLatest(MarketListActions.LOAD_ML, loadMarketListRequest),
         takeLatest(MarketListActions.CREATE_ML, createMarketListRequest),
+        takeLatest(MarketListActions.CREATE_SUCCESS, loadMarketListRequest),
     ]);
 }

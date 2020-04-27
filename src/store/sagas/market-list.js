@@ -14,7 +14,7 @@ export function* loadMarketListRequest(action){
 
 export function* createMarketListRequest(action){
     try{
-        yield call(services.createMarketList(action.marketList));
+        yield services.createMarketList(action.marketList);
         yield put(MarketListActions.createSuccess());
     } catch(err){
         console.log(err)
