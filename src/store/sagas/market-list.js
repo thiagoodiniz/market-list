@@ -11,3 +11,13 @@ export function* loadMarketListRequest(action){
         yield put(MarketListActions.loadMarketListsError());
     }
 } 
+
+export function* createMarketListRequest(action){
+    try{
+        yield call(services.createMarketList(action.marketList));
+        yield put(MarketListActions.createSuccess());
+    } catch(err){
+        console.log(err)
+        yield put(MarketListActions.createError());
+    }
+} 

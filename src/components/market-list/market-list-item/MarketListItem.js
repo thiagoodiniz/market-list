@@ -15,12 +15,11 @@ const MarketListItem = (props) => {
         setName(props.name);
         setDescription(props.description);
         setMarket(props.market);
-        toggleIsEditing(props.isEditing);
-    }, [props.name, props.description, props.market, props.isEditing]);
+    }, [props.name, props.description, props.market]);
 
     return(
         <Card className="list-card">
-            { !isEditing && 
+            { !isEditing && !props.isCreating &&
                 <>
                     <CardContent className="list-card__content">
                         <Typography component="h6" variant="h6">
@@ -49,7 +48,7 @@ const MarketListItem = (props) => {
                 </>
             }
 
-            { isEditing &&
+            { (isEditing || props.isCreating) &&
                 <>
                     <CardContent className="list-card__content">
                         <TextField
@@ -72,10 +71,10 @@ const MarketListItem = (props) => {
                     </CardContent>
 
                     <CardActions>
-                        <Button size="small" color="primary" onClick={ () => props.toggleAddingList ? props.toggleAddingList(false) : toggleIsEditing(!isEditing) }>
+                        <Button size="small" color="primary" onClick={ () => props.isCreating ? props.toggleAddingList() : toggleIsEditing(!isEditing) }>
                             Cancelar
                         </Button>
-                        <Button size="small" color="primary">
+                        <Button size="small" color="primary" onClick={ props.onSaveMarketList({ name, description, market }) }>
                             Salvar
                         </Button>
                     </CardActions>
@@ -89,8 +88,9 @@ MarketListItem.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string,
     market: PropTypes.string,
-    isEditing: PropTypes.bool,
+    isCreating: PropTypes.bool,
     onRemove: PropTypes.func,
+    toggleAddingList: PropTypes.func
   };
 
 export default MarketListItem;

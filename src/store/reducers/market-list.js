@@ -30,6 +30,28 @@ export default function marketLists(state=INITIAL_STATE, action) {
                 marketLists: [],
             }
 
+
+        case Types.CREATE_ML:
+            return {
+                ...state,
+                loading: true,
+            }
+        
+        case Types.CREATE_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                error: false,
+            }
+        
+        case Types.CREATE_ERROR:
+            return {
+                ...state,
+                loading: false,
+                error: true,
+            }
+
+
         default:
             return state;
     }

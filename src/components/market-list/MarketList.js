@@ -16,7 +16,11 @@ const MarketList = ( props ) => {
 
 	useEffect(() => {
 		dispatch( MarketListActions.loadMarketLists() );
-    }, [dispatch]);
+	}, [dispatch]);
+	
+	const onSaveMarketList = (ml) => {
+		dispatch( MarketListActions.createMarketList(ml));
+	}
 
 	const handleRemoveList = (idx) => {
 		console.log(`remover o indice ${ idx }`);
@@ -31,12 +35,18 @@ const MarketList = ( props ) => {
 			) }
 
 			{ addingList && 
-				<MarketListItem onRemove={ () => undefined } name='' description='' market='' isEditing={ true } toggleAddingList={ toggleAddingList }  />
+				<MarketListItem 
+					onRemove={ () => undefined } 
+					name='' description='' market='' 
+					isCreating={ true } 
+					toggleAddingList={ () => toggleAddingList(false) }
+					onSaveMarketList={ (ml) => onSaveMarketList.bind(this, ml) }
+				/>
 			}
 
 			{ !addingList && 
 				<Card className="list-card add-list">
-					<Button onClick={ () => toggleAddingList( true ) } >
+					<Button onClick={ () => toggleAddingList(true) } >
 						<FontAwesomeIcon color="#3f53b5" icon={ faPlusCircle } size="lg"/>
 					</Button>
 				</Card>
