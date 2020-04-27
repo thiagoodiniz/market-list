@@ -72,7 +72,7 @@ const MarketListItem = (props) => {
                     </CardContent>
 
                     <CardActions>
-                        <Button size="small" color="primary" onClick={ () => toggleIsEditing(!isEditing) }>
+                        <Button size="small" color="primary" onClick={ () => props.toggleAddingList ? props.toggleAddingList(false) : toggleIsEditing(!isEditing) }>
                             Cancelar
                         </Button>
                         <Button size="small" color="primary">

@@ -31,14 +31,16 @@ const MarketList = ( props ) => {
 			) }
 
 			{ addingList && 
-				<MarketListItem onRemove={ () => undefined } name='' description='' market='' isEditing={ true } />
+				<MarketListItem onRemove={ () => undefined } name='' description='' market='' isEditing={ true } toggleAddingList={ toggleAddingList }  />
 			}
 
-			<Card className="list-card add-list">
-				<Button onClick={ () => toggleAddingList( !addingList ) } >
-					<FontAwesomeIcon color="#3f53b5" icon={ faPlusCircle } size="lg"/>
-				</Button>
-			</Card>
+			{ !addingList && 
+				<Card className="list-card add-list">
+					<Button onClick={ () => toggleAddingList( true ) } >
+						<FontAwesomeIcon color="#3f53b5" icon={ faPlusCircle } size="lg"/>
+					</Button>
+				</Card>
+			}
 		</section>
 	);
 }
