@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 export default function marketLists(state=INITIAL_STATE, action) {
     switch(action.type){
 
-        case Types.LOAD_MARKET_LISTS:
+        case Types.LOAD_ML:
             return {
                 loading: true,
                 error: false,

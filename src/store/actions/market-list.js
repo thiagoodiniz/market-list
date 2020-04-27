@@ -1,12 +1,12 @@
 export const Types = {
-    LOAD_MARKET_LISTS: '@marketLists/LOAD_REQUEST',
+    LOAD_ML: '@marketLists/LOAD_REQUEST',
     LOAD_SUCCESS: '@marketLists/LOAD_SUCCESS',
-    LOAD_ERROR: '@marketLists/LOAD_ERROR'
+    LOAD_ERROR: '@marketLists/LOAD_ERROR',
 };
 
 export const Creators = {
     loadMarketLists: () => ({
-        type: Types.LOAD_MARKET_LISTS,
+        type: Types.LOAD_ML,
     }),
     loadMarketListsSuccess: (marketLists) => ({
         type: Types.LOAD_SUCCESS,
@@ -15,4 +15,5 @@ export const Creators = {
     loadMarketListsError: () => ({
         type: Types.LOAD_ERROR,
     }),
+
 }

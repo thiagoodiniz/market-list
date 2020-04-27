@@ -4,6 +4,6 @@ import { loadMarketListRequest } from './market-list';
 
 export default function* rootSaga() {
     return yield all([
-        takeLatest(MarketListActions.LOAD_MARKET_LISTS, loadMarketListRequest),
+        takeLatest(MarketListActions.LOAD_ML, loadMarketListRequest),
     ]);
 }
