@@ -21,3 +21,15 @@ export function* createMarketListRequest(action){
         yield put(MarketListActions.createError());
     }
 } 
+
+export function* deleteMarketListRequest(action){
+    try{
+        yield services.deleteMarketList(action.marketList);
+        yield put(MarketListActions.deleteSuccess());
+    } catch(err){
+        console.log(err)
+        yield put(MarketListActions.deleteError());
+    }
+} 
+
+

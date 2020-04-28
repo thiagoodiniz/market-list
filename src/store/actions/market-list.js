@@ -6,6 +6,10 @@ export const Types = {
     CREATE_ML: '@marketLists/CREATE_REQUEST',
     CREATE_SUCCESS: '@marketLists/CREATE_SUCCESS',
     CREATE_ERROR: '@marketLists/CREATE_ERRORS',
+
+    DELETE_ML: '@marketLists/DELETE_REQUEST',
+    DELETE_SUCCESS: '@marketLists/DELETE_SUCCESS',
+    DELETE_ERROR: '@marketLists/DELETE_ERRORS',
 };
 
 export const Creators = {
@@ -24,12 +28,21 @@ export const Creators = {
         type: Types.CREATE_ML,
         marketList,
     }),
-
     createSuccess: () => ({
         type: Types.CREATE_SUCCESS
     }),
-
     createError: () => ({
         type: Types.CREATE_ERROR
+    }),
+
+    deleteMarketList: (marketList) => ({
+        type: Types.DELETE_ML,
+        marketList,
+    }),
+    deleteSuccess: () => ({
+        type: Types.DELETE_SUCCESS,
+    }),
+    deleteError: () => ({
+        type: Types.DELETE_ERROR,
     }),
 }

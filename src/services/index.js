@@ -13,4 +13,11 @@ export const services = {
                 console.log('marketList registered:', res.data.list)
             })
     },
+
+    deleteMarketList: (marketList) => {
+        return axios.delete(`${env.apiURL}/${endpoints.removeMarketList}/${marketList._id}`)
+            .then(res => {
+                console.log(res.data.message);
+            })
+    },
 };
